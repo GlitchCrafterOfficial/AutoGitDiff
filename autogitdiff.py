@@ -113,13 +113,26 @@ if __name__ == '__main__':
     load_dotenv()
     parser = argparse.ArgumentParser(description='Change the last two commits of a git repository')
     parser.add_argument('-d', '--directory', type=str, help='The directory of the git repository', required=True)
+    parser.add_argument('-h1', '--hash1', type=str, help='The first commit hash', required=False)
+    parser.add_argument('-h2', '--hash2', type=str, help='The second commit hash', required=False)
     parser.add_argument('-l', '--language', type=str, help='The language of the commit messages', required=False)
     parser.add_argument('-p', '--prompt', type=str, help='The prompt for the AI', required=False)
     parser.add_argument('-o', '--output', type=str, help='The output file', required=False)
 
+
     args = parser.parse_args()
     os.chdir(args.directory)
-    commit_ids = last_two_commits_ids()
+
+    h1 = args.hash1
+    h2 = args.hash2
+
+    if h1 is not None:
+        h2 = "HEAD"
+        h1 = f"{h1}"
+        commit_ids = [h1, h2]    
+    else:
+        commit_ids = last_two_commits_ids()
+    print("COMMIT_IDS", commit_ids)
     
 
     # Aditional params 

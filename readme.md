@@ -32,7 +32,7 @@ Cuando trabajas en proyectos donde la documentación de cambios es crucial, Auto
 1. Clona este repositorio:
 
 ```bash
-git clone https://github.com/yourusername/AutoGitDiff.git
+git clone https://github.com/GlitchCrafterOfficial/AutoGitDiff.git
 cd AutoGitDiff
 ```
 
